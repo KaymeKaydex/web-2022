@@ -469,7 +469,7 @@ func New(dsn string) (*Repository, error) {
 	}, nil
 }
 
-func (r *Repository) GetProductByID(id int) (*ds.Product, error) {
+func (r *Repository) GetProductByID(id uint) (*ds.Product, error) {
 	product := &ds.Product{}
 
 	err := r.db.First(product, "id = ?", "1").Error // find product with code D42
@@ -480,7 +480,7 @@ func (r *Repository) GetProductByID(id int) (*ds.Product, error) {
 	return product, nil
 }
 
-func (r *Repository) CreateProduct(product ds.Product) error {
+func (r *Repository) CreateProduct(product *ds.Product) error {
 	return r.db.Create(product).Error
 }
 
